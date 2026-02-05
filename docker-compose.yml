@@ -1,0 +1,12 @@
+services:
+  test-suite:
+    build: .
+    image: playwright-automation
+    volumes:
+      # Maps the container's report folder to your local 'reports' folder
+      - ./playwright-reports:/app/playwright-report
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+    # Automatically runs pytest and generates the HTML report
+    command: >
+      pytest --html=playwright-report/index.html --self-contained-html

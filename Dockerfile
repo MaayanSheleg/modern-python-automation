@@ -6,10 +6,10 @@ WORKDIR /app
 
 # 3. We will copy the requirements file and install them.
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # 4. We will copy all our code into the container.
 COPY . .
 
 # 5. The command that will run when the container starts - running the tests!
-CMD ["pytest"]
+CMD ["pytest", "--html=report.html", "--self-contained-html"]
